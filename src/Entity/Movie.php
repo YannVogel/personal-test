@@ -37,7 +37,7 @@ class Movie
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity=MovieHasPeople::class, mappedBy="movieId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=MovieHasPeople::class, mappedBy="movie", orphanRemoval=true)
      */
     private $people;
 
@@ -144,7 +144,7 @@ class Movie
     {
         if (!$this->people->contains($person)) {
             $this->people[] = $person;
-            $person->setMovieId($this);
+            $person->setMovie($this);
         }
 
         return $this;
@@ -158,8 +158,8 @@ class Movie
     {
         if ($this->people->removeElement($person)) {
             // set the owning side to null (unless already changed)
-            if ($person->getMovieId() === $this) {
-                $person->setMovieId(null);
+            if ($person->getMovie() === $this) {
+                $person->setMovie(null);
             }
         }
 
