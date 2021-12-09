@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MovieHasPeopleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=MovieHasPeopleRepository::class)
  */
 class MovieHasPeople
@@ -50,7 +52,7 @@ class MovieHasPeople
     /**
      * @return Movie|null
      */
-    public function getMovieId(): ?Movie
+    public function getMovie(): ?Movie
     {
         return $this->movie;
     }
@@ -59,7 +61,7 @@ class MovieHasPeople
      * @param Movie|null $movie
      * @return $this
      */
-    public function setMovieId(?Movie $movie): self
+    public function setMovie(?Movie $movie): self
     {
         $this->movie = $movie;
 
@@ -69,7 +71,7 @@ class MovieHasPeople
     /**
      * @return People|null
      */
-    public function getPeopleId(): ?People
+    public function getPeople(): ?People
     {
         return $this->people;
     }
@@ -78,7 +80,7 @@ class MovieHasPeople
      * @param People|null $people
      * @return $this
      */
-    public function setPeopleId(?People $people): self
+    public function setPeople(?People $people): self
     {
         $this->people = $people;
 
